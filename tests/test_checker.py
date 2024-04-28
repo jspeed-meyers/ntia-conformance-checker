@@ -151,6 +151,14 @@ def test_sbomchecker_tern_photon_example():
         "bash",
     ]
 
+def test_sbomchecker_chainguard_container_example():
+    """Check that SBOM from a Chainguard images SBOM passes."""
+    test_file = os.path.join(
+        os.path.dirname(__file__), "data", "SPDXSBOMExampleTests", "chainguard.spdx.json"
+    )
+    sbom = sbom_checker.SbomChecker(test_file)
+    assert sbom.ntia_minimum_elements_compliant
+
 
 def test_sbomchecker_bom_alpine_example():
     """Check that SBOM for alpine has component with missing version."""
